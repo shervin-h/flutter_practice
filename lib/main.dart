@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_signature_pad/flutter_signature_pad.dart';
 import 'package:practice/src/helper/signature_helper.dart';
+import 'package:practice/src/helper/sleek_circular_slider_helper.dart';
 import 'package:practice/src/helper/work_with_files.dart' ;
 
 
@@ -42,15 +43,29 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                CupertinoPageRoute(
-                  builder: (context) => const SignatureSample(),
-                ),
-              );
-            },
-            child: const Text('Go to signature page'),
+          child: Column(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                      builder: (context) => const SignatureSample(),
+                    ),
+                  );
+                },
+                child: const Text('Go to signature screen'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    CupertinoPageRoute(
+                      builder: (context) => const CurveSliderScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Go to curve slider screen')
+              ),
+            ],
           ),
         ),
       ),
