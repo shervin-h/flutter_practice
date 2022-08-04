@@ -5,6 +5,7 @@ import 'package:flutter_signature_pad/flutter_signature_pad.dart';
 import 'package:practice/src/helper/signature_helper.dart';
 import 'package:practice/src/helper/sleek_circular_slider_helper.dart';
 import 'package:practice/src/helper/syncfusion_flutter_gauges.dart';
+import 'package:practice/src/helper/vehicle_license_plate.dart';
 import 'package:practice/src/helper/work_with_files.dart' ;
 import 'package:practice/src/screens/angela_animation_screen.dart';
 import 'package:practice/src/screens/animation_screen.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const LicensePlate(),
     );
   }
 }
