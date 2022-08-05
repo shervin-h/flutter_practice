@@ -26,9 +26,7 @@ class _SignatureSampleState extends State<SignatureSample> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    // double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       body: SafeArea(
         child: Column(
           children: [

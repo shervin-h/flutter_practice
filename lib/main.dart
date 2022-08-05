@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:flutter_signature_pad/flutter_signature_pad.dart';
-import 'package:practice/src/helper/signature_helper.dart';
-import 'package:practice/src/helper/sleek_circular_slider_helper.dart';
-import 'package:practice/src/helper/syncfusion_flutter_gauges.dart';
-import 'package:practice/src/helper/vehicle_license_plate.dart';
-import 'package:practice/src/helper/work_with_files.dart' ;
+import 'package:practice/src/screens/add/tabs/signature_helper.dart';
+import 'package:practice/src/screens/add/tabs/sleek_circular_slider_helper.dart';
+import 'package:practice/src/screens/add/tabs/syncfusion_flutter_gauges.dart';
+import 'package:practice/src/screens/add/tabs/vehicle_license_plate.dart';
+import 'package:practice/src/helper/work_with_files.dart';
 import 'package:practice/src/screens/angela_animation_screen.dart';
 import 'package:practice/src/screens/animation_screen.dart';
 import 'package:practice/src/screens/config_screen.dart';
 import 'package:practice/src/screens/home_screen.dart';
+import 'package:practice/src/screens/add/tabs/images_screen.dart';
 import 'package:practice/src/screens/menu_screen.dart';
-
-
+import 'package:practice/src/screens/add/tab_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,11 +34,53 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English, no country code
+        Locale('fa', ''),
+      ],
+      locale: const Locale('fa'),
+
       theme: ThemeData(
         fontFamily: 'Vazir',
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.grey.shade300,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Colors.cyan,
+          onPrimary: Colors.white,
+          secondary: Colors.deepOrange,
+          onSecondary: Colors.white,
+        ),
+
+        appBarTheme: AppBarTheme(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(
+            fontFamily: 'Vazir',
+            color: Colors.grey[700],
+            fontWeight: FontWeight.bold,
+          ),
+
+        ),
+
+        tabBarTheme: TabBarTheme(
+          labelColor: Colors.grey[700],
+          labelStyle: const TextStyle(
+            fontFamily: 'Vazir',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+
       ),
       home: const MenuScreen(),
+      routes: {
+        TabScreen.routeName: (context) => TabScreen(),
+      },
     );
   }
 }

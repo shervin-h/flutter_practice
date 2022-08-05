@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:practice/src/helper/signature_helper.dart';
-import 'package:practice/src/helper/syncfusion_flutter_gauges.dart';
+import 'package:practice/src/screens/add/tabs/signature_helper.dart';
+import 'package:practice/src/screens/add/tabs/syncfusion_flutter_gauges.dart';
 import 'package:practice/src/screens/angela_animation_screen.dart';
 import 'package:practice/src/screens/animation_screen.dart';
-import 'package:practice/src/screens/tab_screen.dart';
+import 'package:practice/src/screens/add/tab_screen.dart';
 
 import 'config_screen.dart';
 
