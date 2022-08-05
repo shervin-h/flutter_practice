@@ -180,7 +180,7 @@ class _LicensePlateState extends State<LicensePlate> {
                             icon: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(_iranNumber, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18,),),
+                                Text(_iranNumber, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14,),),
                                 const SizedBox(width: 2),
                                 const Icon(CupertinoIcons.chevron_down, size: 12,),
                               ],
