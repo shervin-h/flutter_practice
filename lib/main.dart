@@ -14,6 +14,7 @@ import 'package:practice/src/screens/animation_screen.dart';
 import 'package:practice/src/screens/config_screen.dart';
 import 'package:practice/src/screens/home_screen.dart';
 import 'package:practice/src/screens/add/tabs/images_screen.dart';
+import 'package:practice/src/screens/login_screen.dart';
 import 'package:practice/src/screens/menu_screen.dart';
 import 'package:practice/src/screens/add/tab_screen.dart';
 
@@ -68,6 +69,16 @@ class MyApp extends StatelessWidget {
 
         ),
 
+        inputDecorationTheme: InputDecorationTheme(
+          contentPadding: const EdgeInsets.all(4),
+          filled: true,
+          fillColor: Colors.grey.shade200,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16),
+            borderSide: BorderSide.none,
+          ),
+        ),
+
         tabBarTheme: TabBarTheme(
           labelColor: Colors.grey[700],
           labelStyle: const TextStyle(
@@ -77,7 +88,7 @@ class MyApp extends StatelessWidget {
         ),
 
       ),
-      home: const MenuScreen(),
+      home: const AnimationScreen(),
       routes: {
         TabScreen.routeName: (context) => TabScreen(),
       },
