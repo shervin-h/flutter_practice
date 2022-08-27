@@ -1,13 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:practice/src/helper/custom_clipper.dart';
 
-class LoginScree extends StatelessWidget {
-  const LoginScree({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  LoginScreen({Key? key}) : super(key: key);
 
   static const String routeName = 'login_screen';
 
+
+
+  TextEditingController ctr1 = TextEditingController();
+  TextEditingController ctr2 = TextEditingController();
+
+  FocusNode focus1 = FocusNode();
+  FocusNode focus2 = FocusNode();
+
+
+
   @override
   Widget build(BuildContext context) {
+
+    ctr2.text = '25000';
+
+    // focus1.addListener(() {
+    //   if (focus1.hasFocus && ctr1.text.trim().isNotEmpty && ctr2.text.trim().isNotEmpty) {
+    //     print(ctr1.text);
+    //     print(ctr2.text);
+    //   }
+    // });
+
+
+    ctr1.addListener(() {
+      if(focus1.hasFocus && ctr1.text.trim().isNotEmpty && ctr2.text.trim().isNotEmpty) {
+        int tf1 = int.parse(ctr1.text);
+        int tf2 = int.parse(ctr2.text);
+        if(tf1 < tf2) {
+          print('فیلد اول نمیتواند از فیلد دوم کوچکتر باشد');
+        } else {
+          print('آفرین') ;
+        }
+      }
+    });
+
+
+
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -47,6 +82,9 @@ class LoginScree extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      controller: ctr1,
+                      focusNode: focus1,
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: 'نام کاربری',
                         hintStyle: TextStyle(fontFamily: 'Vazir'),
@@ -56,6 +94,9 @@ class LoginScree extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      controller: ctr2,
+                      focusNode: focus2,
+                      keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         hintText: 'رمز عبور',
                         hintStyle: TextStyle(fontFamily: 'Vazir'),
