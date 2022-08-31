@@ -88,7 +88,7 @@ class MyApp extends StatelessWidget {
         ),
 
       ),
-      home: LoginScreen(),
+      home: TabScreen(),
       routes: {
         TabScreen.routeName: (context) => TabScreen(),
       },

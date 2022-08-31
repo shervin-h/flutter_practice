@@ -54,7 +54,7 @@ class _TabScreenState extends State<TabScreen> with TickerProviderStateMixin {
         ),
       ),
       body: TabBarView(
-        physics: const BouncingScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: _tabController,
         children: [
           const LicensePlate(),
