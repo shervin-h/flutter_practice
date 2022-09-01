@@ -14,19 +14,10 @@ class LoginScreen extends StatelessWidget {
   FocusNode focus1 = FocusNode();
   FocusNode focus2 = FocusNode();
 
-
+  late TextEditingValue _value;
 
   @override
   Widget build(BuildContext context) {
-
-    ctr2.text = '25000';
-
-    // focus1.addListener(() {
-    //   if (focus1.hasFocus && ctr1.text.trim().isNotEmpty && ctr2.text.trim().isNotEmpty) {
-    //     print(ctr1.text);
-    //     print(ctr2.text);
-    //   }
-    // });
 
 
     ctr1.addListener(() {
@@ -38,6 +29,17 @@ class LoginScreen extends StatelessWidget {
         } else {
           print('آفرین') ;
         }
+      }
+    });
+
+
+    ctr2.addListener(() {
+      if(focus2.hasFocus && ctr2.value.text.trim().length == 2 && !ctr2.text.contains('/')) {
+        String value = '${ctr2.text}/';
+        ctr2.value = TextEditingValue(
+          text: value,
+          selection: TextSelection.collapsed(offset: value.length),
+        );
       }
     });
 
@@ -97,6 +99,17 @@ class LoginScreen extends StatelessWidget {
                       controller: ctr2,
                       focusNode: focus2,
                       keyboardType: TextInputType.number,
+                      maxLines: 1,
+                      maxLength: 5,
+                      // onChanged: (value) {
+                      //   if(value.trim().length == 2 && !value.contains('/')) {
+                      //     value = '$value/';
+                      //     ctr2.value = TextEditingValue(
+                      //       text: value,
+                      //       selection: TextSelection.collapsed(offset: value.length),
+                      //     );
+                      //   }
+                      // },
                       decoration: InputDecoration(
                         hintText: 'رمز عبور',
                         hintStyle: TextStyle(fontFamily: 'Vazir'),
