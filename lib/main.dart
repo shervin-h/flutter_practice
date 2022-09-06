@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_signature_pad/flutter_signature_pad.dart';
+import 'package:practice/src/screens/add/images_provider.dart';
 import 'package:practice/src/screens/add/tabs/signature_helper.dart';
 import 'package:practice/src/screens/add/tabs/sleek_circular_slider_helper.dart';
 import 'package:practice/src/screens/add/tabs/syncfusion_flutter_gauges.dart';
@@ -17,6 +18,7 @@ import 'package:practice/src/screens/add/tabs/images_screen.dart';
 import 'package:practice/src/screens/login_screen.dart';
 import 'package:practice/src/screens/menu_screen.dart';
 import 'package:practice/src/screens/add/tab_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +26,14 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ImagesProvider>(create: (_) => ImagesProvider()),
+      ],
+      child: const MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -88,7 +97,7 @@ class MyApp extends StatelessWidget {
         ),
 
       ),
-      home: LoginScreen(),
+      home: TabScreen(),
       routes: {
         TabScreen.routeName: (context) => TabScreen(),
       },

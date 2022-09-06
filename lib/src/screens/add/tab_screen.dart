@@ -4,10 +4,12 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:practice/src/screens/add/images_provider.dart';
 import 'package:practice/src/screens/add/tabs/signature_helper.dart';
 import 'package:practice/src/screens/add/tabs/syncfusion_flutter_gauges.dart';
 import 'package:practice/src/screens/add/tabs/vehicle_license_plate.dart';
 import 'package:practice/src/screens/add/tabs/images_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'keys.dart';
 
@@ -75,8 +77,10 @@ class _TabScreenState extends State<TabScreen> with TickerProviderStateMixin {
 
               File imageFuel = KeyUtil.imagePickerScreenKey.currentState!.imageFileFuel!;
               String encodedImageFuelAsString = base64.encode(await imageFuel.readAsBytes());
+              Provider.of<ImagesProvider>(context, listen: false).setBase64EncodedString(encodedImageFuelAsString);
               print('---------------------------------');
-              print('image fuel as encoded string: $encodedImageFuelAsString');
+              // print('image fuel as encoded string: $encodedImageFuelAsString');
+              debugPrint('__${encodedImageFuelAsString}__');
 
               File imageKilometer = KeyUtil.imagePickerScreenKey.currentState!.imageFileKilometer!;
               String encodedImageKilometerAsString = base64.encode(await imageKilometer.readAsBytes());

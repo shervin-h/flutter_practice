@@ -98,7 +98,7 @@ class _LicensePlateState extends State<LicensePlate> {
                     flex: 2,
                     child: TextField(
                       controller: _twoDigitsController,
-                      autofocus: true,
+                      // autofocus: true,
                       keyboardType: TextInputType.number,
                       maxLines: 1,
                       textAlign: TextAlign.center,

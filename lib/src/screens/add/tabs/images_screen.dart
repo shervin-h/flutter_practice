@@ -1,7 +1,11 @@
 import 'dart:io';
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:practice/src/screens/add/images_provider.dart';
+import 'package:provider/provider.dart';
 
 class ImagePickerScreen extends StatefulWidget {
   const ImagePickerScreen({Key? key}) : super(key: key);
@@ -11,6 +15,27 @@ class ImagePickerScreen extends StatefulWidget {
 }
 
 class ImagePickerScreenState extends State<ImagePickerScreen> {
+
+  /*
+    import 'dart:convert';
+    import 'dart:typed_data';
+    import 'package:flutter/widgets.dart';
+
+
+    Image imageFromBase64String(String base64String) {
+      return Image.memory(base64Decode(base64String));
+    }
+
+    Uint8List dataFromBase64String(String base64String) {
+      return base64Decode(base64String);
+    }
+
+    String base64String(Uint8List data) {
+      return base64Encode(data);
+    }
+   */
+  File? imageFileTest;
+
   File? imageFileFront;
   File? imageFileBack;
   File? imageFileRightSide;
@@ -50,6 +75,7 @@ class ImagePickerScreenState extends State<ImagePickerScreen> {
     return imageFiles;
   }
 
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -59,6 +85,16 @@ class ImagePickerScreenState extends State<ImagePickerScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            Consumer<ImagesProvider>(
+              builder: (context, imgpro, _) {
+                return Expanded(
+                  flex: 2,
+                  child: (imgpro.base64EncodedString != null)
+                      ? Image.memory(base64Decode(imgpro.base64EncodedString!))
+                      : const SizedBox(),
+                );
+              },
+            ),
             Expanded(
               flex: 8,
               child: Container(
@@ -77,6 +113,22 @@ class ImagePickerScreenState extends State<ImagePickerScreen> {
                     childAspectRatio: 1 / 1,
                   ),
                   children: [
+                    ImagePickerGridItem(
+                      file: imageFileTest,
+                      title: 'تست',
+                      onCameraTap: () async {
+                        imageFileTest = await _pickImage();
+                        setState(() {});
+                      },
+                      onGalleryTap: () async {
+                        imageFileTest = await _pickImage(source: ImageSource.gallery);
+                        setState(() {});
+                      },
+                      onClearTap: () async {
+                        imageFileTest = null;
+                        setState(() {});
+                      },
+                    ),
                     ImagePickerGridItem(
                       file: imageFileFront,
                       title: 'جلو',
