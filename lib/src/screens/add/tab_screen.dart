@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:practice/src/screens/add/images_provider.dart';
+import 'package:practice/src/screens/add/tabs/images_screen2.dart';
 import 'package:practice/src/screens/add/tabs/signature_helper.dart';
 import 'package:practice/src/screens/add/tabs/syncfusion_flutter_gauges.dart';
 import 'package:practice/src/screens/add/tabs/vehicle_license_plate.dart';
@@ -29,6 +30,7 @@ class _TabScreenState extends State<TabScreen> with TickerProviderStateMixin {
     Tab(text: 'اطلاعات'),
     Tab(text: 'موقعیت'),
     Tab(text: 'تصاویر'),
+    Tab(text: 'تصاویر ۲'),
     Tab(text: 'امضا'),
   ];
 
@@ -62,6 +64,7 @@ class _TabScreenState extends State<TabScreen> with TickerProviderStateMixin {
           const LicensePlate(),
           const SyncfusionFlutterGaugesScreen(),
           ImagePickerScreen(key: KeyUtil.imagePickerScreenKey),
+          const ImagePickerScreen2(),
           const SignatureSample(),
         ],
       ),

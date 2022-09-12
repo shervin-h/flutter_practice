@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_signature_pad/flutter_signature_pad.dart';
 import 'package:practice/src/screens/add/images_provider.dart';
+import 'package:practice/src/screens/add/tabs/providers/images_tab_provider.dart';
 import 'package:practice/src/screens/add/tabs/signature_helper.dart';
 import 'package:practice/src/screens/add/tabs/sleek_circular_slider_helper.dart';
 import 'package:practice/src/screens/add/tabs/syncfusion_flutter_gauges.dart';
@@ -18,6 +19,7 @@ import 'package:practice/src/screens/add/tabs/images_screen.dart';
 import 'package:practice/src/screens/login_screen.dart';
 import 'package:practice/src/screens/menu_screen.dart';
 import 'package:practice/src/screens/add/tab_screen.dart';
+import 'package:practice/src/screens/remove_html_tags.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -30,6 +32,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider<ImagesProvider>(create: (_) => ImagesProvider()),
+        ChangeNotifierProvider<ImagesTabData>(create: (_) => ImagesTabData()),
       ],
       child: const MyApp(),
     )
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
-        AppLocalizations.delegate,
+        // AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
